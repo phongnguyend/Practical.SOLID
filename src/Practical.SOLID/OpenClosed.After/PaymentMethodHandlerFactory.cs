@@ -2,9 +2,9 @@
 {
     internal class PaymentMethodHandlerFactory : IPaymentMethodHandlerFactory
     {
-        public IPaymentMethodHandler GetPaymentMethodHandler(PaymentMethod paymentType)
+        public IPaymentMethodHandler GetPaymentMethodHandler(PaymentMethod paymentMethod)
         {
-            return paymentType switch
+            return paymentMethod switch
             {
                 PaymentMethod.Cash => new CashPaymentMethodHandler(),
                 PaymentMethod.CreditCard => new CreditCardPaymentMethodHandler(),

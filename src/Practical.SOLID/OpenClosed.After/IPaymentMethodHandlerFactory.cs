@@ -2,6 +2,6 @@
 {
     internal interface IPaymentMethodHandlerFactory
     {
-        IPaymentMethodHandler GetPaymentMethodHandler(PaymentMethod paymentType);
+        IPaymentMethodHandler GetPaymentMethodHandler(PaymentMethod paymentMethod);
     }
 }

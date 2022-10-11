@@ -2,24 +2,19 @@
 {
     internal class PaymentService
     {
-        void Pay(Guid orderId, PaymentMethod paymentMethod)
+        private readonly IPaymentMethodHandlerFactory _paymentMethodHandlerFactory;
+
+        public PaymentService(IPaymentMethodHandlerFactory paymentMethodHandlerFactory)
+        {
+            _paymentMethodHandlerFactory = paymentMethodHandlerFactory;
+        }
+
+        public void Pay(Guid orderId, PaymentMethod paymentMethod)
         {
             // TODO: get order 
 
-            switch (paymentMethod)
-            {
-                case PaymentMethod.Cash:
-                    // TODO: 
-                    break;
-                case PaymentMethod.CreditCard:
-                    // TODO: 
-                    break;
-                case PaymentMethod.PayPal:
-                    // TODO: 
-                    break;
-                default:
-                    break;
-            }
+            var paymentHandler = _paymentMethodHandlerFactory.GetPaymentMethodHandler(paymentMethod);
+            paymentHandler.Handle();
 
             // TODO: save result
         }
